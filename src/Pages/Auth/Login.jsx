@@ -1,11 +1,11 @@
 import React from "react";
 
-const SingUp = () => {
+const Login = () => {
     return (
         <>
-            <h1>Sing Up Page</h1>
+            <h1> Login Page</h1>
         </>
     );
 };
 
-export default SingUp;
+export default Login;
