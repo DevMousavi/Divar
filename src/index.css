@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "IRANSansX";
+        src: url("./Font/IRANSansX-Regular.woff2") format("woff2"),
+            local("IRANSansX-Regular"), local("iranSansX-Regular"),
+            local("IranSansX-Regular"), local("IRANSANSX"), local("iransansx"),
+            local("IranSansX-regular");
+        font-style: normal;
+    }
+}
+
+@layer components {
+    .primary-transition {
+        transition: all ease 250ms;
+    }
+    .primaryBoxShadow {
+        box-shadow: 0px 0px 8px #858484;
+    }
+
+    .hoverBtn {
+        background-color: #ffffff;
+        color: #a62626;
+        border: 2px solid #a62626;
+    }
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "IRANSansX";
+}
