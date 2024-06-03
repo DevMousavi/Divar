@@ -1,8 +1,8 @@
-# React + Vite
+This project is modeled after the Divar website, and it includes features such as an Admin Panel, React Query, Context API, API Fetching, and State Management. Additionally, it is responsive across all devices.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The project utilizes the following dependencies:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Axios
+Tailwind CSS
+React Router DOM
+React Icons
