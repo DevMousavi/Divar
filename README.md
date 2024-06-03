@@ -1,10 +1,17 @@
+## Project Overview
 
-<h2>
-  This project is modeled after the <a href="https://divar.ir/s/tehran">Divar</a> site and includes features such as an admin panel, React Query, context API, API fetching, and state management. The site is also responsive for all devices.
-</h2>
+This project is modeled after the [Divar](https://divar.ir/s/tehran) site and includes features such as:
+- Admin panel
+- React Query
+- Login and registration
+- Working with tokens
+- Using interceptors
+- Context API
+- API fetching
+- State management
+- Responsiveness for all devices
 
-
-Key dependencies used in this project:
+### Key Dependencies
 - Axios
 - Tailwind CSS
 - React Router DOM
