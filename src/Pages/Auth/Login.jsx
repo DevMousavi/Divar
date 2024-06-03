@@ -50,51 +50,60 @@ const Login = () => {
         );
     };
 
-    if (isPending) return <h1>IsLoading...</h1>;
-
     return (
         <>
             <HeaderAuth />
             <main>
-                <form
-                    onSubmit={submitHandler}
-                    className="w-80 h-60 mx-auto mt-5 rounded-lg primaryBoxShadow px-4 py-5"
-                >
-                    <div>
-                        <label
-                            htmlFor="phoneNumber"
-                            className=" text-black opacity-65 text-sm"
-                        >
-                            لطفا شماره تماس خود را وارد کنید
-                        </label>
-                        <input
-                            type="number"
-                            id="phoneNumber"
-                            ref={phoneNumber}
-                            className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
-                        />
+                {isPending ? (
+                    <div className="flex items-center justify-center w-80 h-60 mx-auto mt-5 primaryBoxShadow rounded-lg">
+                        <span className="flex flex-col items-center gap-4 justify-center">
+                            <p>در حال دریافت اطلاعات هستیم</p>
+                            <p>لطفا صبور باشید</p>
+                        </span>
                     </div>
-                    <div className="mt-3">
-                        <label
-                            htmlFor="password"
-                            className=" text-black opacity-65 text-sm "
-                        >
-                            لطفا رمز عبور خود را وارد کنید
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            ref={passwordUser}
-                            className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-primaryColor text-white font-bold w-16 h-10 mt-5 mx-auto flex items-center justify-center rounded-md border-solid border-2 primary-transition hover:hoverBtn"
+                ) : (
+                    <form
+                        onSubmit={submitHandler}
+                        className="w-80 h-60 mx-auto mt-5 rounded-lg primaryBoxShadow px-4 py-5"
                     >
-                        ورود
-                    </button>
-                </form>
+                        <div>
+                            <label
+                                htmlFor="phoneNumber"
+                                className=" text-black opacity-65 text-sm"
+                            >
+                                لطفا شماره تماس خود را وارد کنید
+                            </label>
+                            <input
+                                type="number"
+                                id="phoneNumber"
+                                name="phoneNumber"
+                                ref={phoneNumber}
+                                className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
+                            />
+                        </div>
+                        <div className="mt-3">
+                            <label
+                                htmlFor="password"
+                                className=" text-black opacity-65 text-sm "
+                            >
+                                لطفا رمز عبور خود را وارد کنید
+                            </label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
+                                autoComplete="new-password"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="bg-primaryColor text-white font-bold w-16 h-10 mt-5 mx-auto flex items-center justify-center rounded-md border-solid border-2 primary-transition hover:hoverBtn"
+                        >
+                            ورود
+                        </button>
+                    </form>
+                )}
                 <p
                     className={`${
                         isAlert ? "flex" : "hidden"
