@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
-import HeaderAuth from "./HeaderAuth";
 import { useMutation } from "@tanstack/react-query";
-import { api } from "../../services/Config";
-import { setCookies } from "../../Utils/setCookies";
+
+import HeaderAuth from "./HeaderAuth.jsx";
+
+import { api } from "../../services/Config.js";
+import { setCookies } from "../../Utils/setCookies.js";
 
 const Login = () => {
-    const [textAlert, setTextAlert] = useState("jadfgkhdjgf");
+    const [textAlert, setTextAlert] = useState("");
     const [isAlert, setIsAlert] = useState(false);
 
     const phoneNumber = useRef(null);
@@ -26,28 +28,40 @@ const Login = () => {
             password: passwordUser.current.value,
         };
 
-        mutate(
-            {
-                phone: "09131211512",
-                password: "123456789",
-            },
-            {
-                onSuccess: (data) => {
-                    if (data.status === 200 || data.status === 201) {
-                        console.log(data);
-                        setCookies("accessToken", data.data.newAccessToken);
-                        setCookies("refreshToken", data.data.newRefreshToken);
+        if (!phoneNumber.current.value || !passwordUser.current.value) {
+            setTextAlert("شماره تماس و رمز عبور را وارد کنید");
+            setIsAlert(true);
+            setTimeout(() => {
+                setIsAlert(false);
+            }, 3000);
+            return;
+        }
 
-                        setTextAlert("ورود با موفقیت انجام شد");
-                        setIsAlert(true);
-                        setTimeout(() => {
-                            setIsAlert(false);
-                        }, 3000);
-                    }
-                },
-                onError: (error) => console.log("My Error", error),
-            }
-        );
+        mutate(userInformation, {
+            onSuccess: (data) => {
+                if (data.status === 200 || data.status === 201) {
+                    setCookies("accessToken", data.data.newAccessToken);
+                    setCookies("refreshToken", data.data.newRefreshToken);
+
+                    setTextAlert("ورود با موفقیت انجام شد");
+                    setIsAlert(true);
+                    setTimeout(() => {
+                        setIsAlert(false);
+                    }, 3000);
+                }
+            },
+            onError: (error) => {
+                if (error.response.status === 409) {
+                    setTextAlert(
+                        "کاربری با این شماره یافت نشد ، شماره تماس یا رمز عبور خود را بررسی کنید"
+                    );
+                    setIsAlert(true);
+                    setTimeout(() => {
+                        setIsAlert(false);
+                    }, 5000);
+                }
+            },
+        });
     };
 
     return (
@@ -78,7 +92,7 @@ const Login = () => {
                                 id="phoneNumber"
                                 name="phoneNumber"
                                 ref={phoneNumber}
-                                className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
+                                className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm "
                             />
                         </div>
                         <div className="mt-3">
@@ -94,6 +108,7 @@ const Login = () => {
                                 name="password"
                                 className="primaryBoxShadow rounded-md outline-none mt-2 w-full h-8 px-3 text-sm"
                                 autoComplete="new-password"
+                                ref={passwordUser}
                             />
                         </div>
                         <button
@@ -107,7 +122,7 @@ const Login = () => {
                 <p
                     className={`${
                         isAlert ? "flex" : "hidden"
-                    } absolute top-1 left-1 rounded-lg rounded-tl-none bg-primaryColor text-white font-bold px-5 py-2`}
+                    } absolute top-1 left-1 rounded-lg rounded-tl-none bg-primaryColor text-white font-bold w-80 px-5 py-1 items-center justify-center`}
                 >
                     {textAlert}
                 </p>
