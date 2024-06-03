@@ -3,7 +3,7 @@ const setCookies = (tokenName, tokenValue) => {
         document.cookie = `${tokenName}=${tokenValue} ;max-age=${44}`;
     } else if (tokenName === "refreshToken") {
         document.cookie = `${tokenName}=${tokenValue} ;max-age=${
-            30 * 24 * 60 * 60
+            29 * 24 * 60 * 60
         }`;
     } else {
         return {
