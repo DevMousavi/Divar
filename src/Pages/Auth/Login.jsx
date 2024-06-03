@@ -7,16 +7,10 @@ const Login = () => {
     const phoneNumber = useRef(null);
     const passwordUser = useRef(null);
 
-    const mutation = useMutation({
-        mutationFn: async (userInformation) => {
-            const req = await api.post("/auth/login", userInformation);
+    const { mutate } = useMutation({
+        mutationFn: async (data) => {
+            const req = await api.post("/auth/login", data);
             return req;
-        },
-        onSuccess: (res) => {
-            console.log(res);
-        },
-        onError: (err) => {
-            console.log(err);
         },
     });
 
@@ -28,18 +22,16 @@ const Login = () => {
             password: passwordUser.current.value,
         };
 
-        mutation.mutate({
-            phone: "09131211512",
-            password: "123456789",
-        });
-
-        console.log({
-            data: mutation.data,
-            isError: mutation.isError,
-            error: mutation.error,
-            isLoading: mutation.isLoading,
-            isFetching: mutation.isFetching,
-        });
+        mutate(
+            {
+                phone: "09131211512",
+                password: "123456789",
+            },
+            {
+                onSuccess: (data) => console.log("My Data", data),
+                onError: (error) => console.log("My Error", error),
+            }
+        );
     };
 
     return (
