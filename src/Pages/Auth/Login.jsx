@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 import HeaderAuth from "./HeaderAuth.jsx";
 
@@ -13,6 +14,10 @@ const Login = () => {
     const phoneNumber = useRef(null);
     const passwordUser = useRef(null);
 
+    // Use "useNavigate" to take the user to the "HomePage.jsx" page after successful registration
+    const navigate = useNavigate();
+
+    // Using "isPending" to manage "Loading"
     const { mutate, isPending } = useMutation({
         mutationFn: async (data) => {
             const req = await api.post("/auth/login", data);
@@ -23,11 +28,14 @@ const Login = () => {
     const submitHandler = (even) => {
         even.preventDefault();
 
+        // Get user information from input using "useRef" as "Object"
         const userInformation = {
             phone: phoneNumber.current.value,
             password: passwordUser.current.value,
         };
 
+        // Conditions for the safe sending of information to the server
+        // Checking that the "input" is complete
         if (!phoneNumber.current.value || !passwordUser.current.value) {
             setTextAlert("شماره تماس و رمز عبور را وارد کنید");
             setIsAlert(true);
@@ -40,17 +48,28 @@ const Login = () => {
         mutate(userInformation, {
             onSuccess: (data) => {
                 if (data.status === 200 || data.status === 201) {
-                    setCookies("accessToken", data.data.newAccessToken);
-                    setCookies("refreshToken", data.data.newRefreshToken);
-
-                    setTextAlert("ورود با موفقیت انجام شد");
+                    setCookies("accessToken", data.data.newAccessToken); // Place cookies in the user's browser
+                    setCookies("refreshToken", data.data.newRefreshToken); // Place cookies in the user's browser
+                    setTextAlert("ورود با موفقیت انجام شد"); // Display a success message to the user
                     setIsAlert(true);
                     setTimeout(() => {
                         setIsAlert(false);
+                        navigate("/"); // Move the user to the "HomePage.jsx" page.
                     }, 3000);
                 }
             },
             onError: (error) => {
+                // Display the message that the user's device is not connected to the Internet
+                if (error.message === "Network Error") {
+                    setTextAlert(
+                        "احتمالا یکی پاش رفته رو سیم اینترنت پس بررسیش کن :)"
+                    );
+                    setIsAlert(true);
+                    setTimeout(() => {
+                        setIsAlert(false);
+                    }, 7000);
+                }
+                // Display an error message if you did not register or entered information incorrectly
                 if (error.response.status === 409) {
                     setTextAlert(
                         "کاربری با این شماره یافت نشد ، شماره تماس یا رمز عبور خود را بررسی کنید"
