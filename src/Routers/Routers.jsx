@@ -8,6 +8,7 @@ import Login from "../Pages/Auth/Login.jsx";
 import HomePage from "../Pages/HomePage.jsx";
 import { getProfile } from "../services/getProfile.js";
 import AdminHomePage from "../Pages/AdminPanel/AdminHomePage.jsx";
+import AdvertisementRegistration from "../Pages/AdvertisementRegistration.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -16,15 +17,6 @@ const Routers = () => {
     });
     console.log({ data, isLoading, isError, error, isFetching });
     if (isLoading) return <h1>Loading...</h1>;
-
-    // If the user does not have a "refreshToken"
-    // if (error.response.status === 409) {
-    //     return (
-    //         <>
-    //             <h1>ابتدا وارد حساب کاربری خود شوید</h1>
-    //         </>
-    //     );
-    // }
 
     return (
         <BrowserRouter>
@@ -41,6 +33,10 @@ const Routers = () => {
                             <Navigate to="/" />
                         )
                     }
+                />
+                <Route
+                    path="/advertisement-registration"
+                    element={<AdvertisementRegistration />}
                 />
             </Routes>
         </BrowserRouter>
