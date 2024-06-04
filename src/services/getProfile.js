@@ -1,15 +1,12 @@
-import { api } from "./Config";
+import { api } from "./Config.js";
 
-const getProfile = () => {
-    const fetchUserInformation = async () => {
-        try {
-            const request = await api.get("/users/get-me");
-            console.log(request);
-        } catch (error) {
-            console.log({ "Error for catch getProfile": error });
-        }
-    };
-    fetchUserInformation();
+const getProfile = async () => {
+    try {
+        const request = await api.get("/users/get-me");
+        return request.data;
+    } catch (error) {
+        throw error;
+    }
 };
 
 export { getProfile };

@@ -46,7 +46,7 @@ api.interceptors.response.use(
                 try {
                     const response = await axios.post(
                         `${import.meta.env.VITE_BASE_URL}/auth/refresh-token`,
-                        { refreshToken: String(refreshToken) }
+                        { refreshToken: refreshToken }
                     );
                     // Set the "accessToken" in the cookies for subsequent requests
                     if (response.status === 200 || response.status === 201) {

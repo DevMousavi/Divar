@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import HeaderAuth from "./HeaderAuth.jsx";
 
 import { api } from "../../services/Config.js";
 import { setCookies } from "../../Utils/setCookies.js";
+import { getProfile } from "../../services/getProfile.js";
 
 const Login = () => {
     const [textAlert, setTextAlert] = useState("");
@@ -46,7 +47,7 @@ const Login = () => {
         }
 
         mutate(userInformation, {
-            onSuccess: (data) => {
+            onSuccess: async (data) => {
                 if (data.status === 200 || data.status === 201) {
                     setCookies("accessToken", data.data.newAccessToken); // Place cookies in the user's browser
                     setCookies("refreshToken", data.data.newRefreshToken); // Place cookies in the user's browser
@@ -55,7 +56,7 @@ const Login = () => {
                     setTimeout(() => {
                         setIsAlert(false);
                         navigate("/"); // Move the user to the "HomePage.jsx" page.
-                    }, 3000);
+                    }, 2500);
                 }
             },
             onError: (error) => {
