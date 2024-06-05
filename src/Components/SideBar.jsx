@@ -18,14 +18,17 @@ const SideBar = () => {
                 <h1>Loading</h1>
             ) : (
                 <aside className="flex flex-col gap-1 font-bold text-sm text-primaryGray w-full pb-5">
-                    {data &&
-                        data.data.map((item) => (
-                            <ul key={item.id} className="w-full">
-                                <li className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText">
+                    <ul className="w-full">
+                        {data &&
+                            data.data.map((item) => (
+                                <li
+                                    key={item._id}
+                                    className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
+                                >
                                     {item.title}
                                 </li>
-                            </ul>
-                        ))}
+                            ))}
+                    </ul>
                 </aside>
             )}
         </div>

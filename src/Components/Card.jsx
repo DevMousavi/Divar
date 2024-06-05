@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { convertToPersianNumbers } from "../Helpers/convertToPersianNumbers.js";
 
-const Card = () => {
+const Card = ({
+    title,
+
+    location,
+    price,
+}) => {
     return (
         <Link
             to="/about-product"
@@ -9,14 +15,14 @@ const Card = () => {
         >
             <img src="" alt="" className="w-32 h-32 rounded" />
             <div className="flex flex-col justify-between">
-                <h2 className="font-bold text-sm text-black w-full">
-                    اسم محصول اسم محصول اسم محصول اسم محصول اسم محصول
-                </h2>
+                <h2 className="font-bold text-sm text-black w-full">{title}</h2>
                 <span className=" text-primaryGray text-sm flex flex-col gap-3 justify-between">
-                    <p className="text-primaryColor">شیراز</p>
+                    <p className="text-primaryColor">{location}</p>
                     <span>
                         <p>
-                            <strong>قیمت:</strong> 260000 تومان
+                            <strong>قیمت:</strong>{" "}
+                            {convertToPersianNumbers(price.toLocaleString())}{" "}
+                            تومان
                         </p>
                     </span>
                 </span>
