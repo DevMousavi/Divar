@@ -2,15 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { convertToPersianNumbers } from "../Helpers/convertToPersianNumbers.js";
 
-const Card = ({
-    title,
-
-    location,
-    price,
-}) => {
+const Card = ({ title, id, location, price }) => {
     return (
         <Link
-            to="/about-product"
+            to={`/about-product/${id}`}
             className="flex flex-row-reverse justify-between p-4 h-40 w-[33%] rounded-md border border-solid border-gray-300 primary-transition hover:border-primaryColor"
         >
             <img src="" alt="" className="w-32 h-32 rounded" />

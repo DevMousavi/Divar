@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+import Logo from "../../public/Logo.svg";
 
 import { BiSupport } from "react-icons/bi";
 import { IoChatbubblesOutline, IoLocationOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp, IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isCategory, setIsCategory] = useState(false);
@@ -83,7 +85,7 @@ const Header = () => {
                         </div>
                         <Link to="/">
                             <img
-                                src="./Icons/Logo/Logo.svg"
+                                src={Logo}
                                 alt="Logo.svg"
                                 className="w-14 h-14 primary-transition hover:scale-105"
                             />

@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../services/Config.js";
 
-const SideBar = () => {
+const SideBar = ({ setCategory }) => {
     const { data, isLoading } = useQuery({
         queryKey: ["categories"],
         queryFn: async () => {
@@ -11,7 +11,6 @@ const SideBar = () => {
         },
     });
 
-    console.log({ data, isLoading });
     return (
         <div className=" w-72">
             {isLoading ? (
@@ -22,6 +21,9 @@ const SideBar = () => {
                         {data &&
                             data.data.map((item) => (
                                 <li
+                                    onClick={() => {
+                                        setCategory(item._id);
+                                    }}
                                     key={item._id}
                                     className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
                                 >
