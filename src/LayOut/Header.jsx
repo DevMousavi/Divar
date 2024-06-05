@@ -5,8 +5,7 @@ import { IoChatbubblesOutline, IoLocationOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp, IoMdClose } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
-import { getCookies } from "../Utils/getCookies";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isCategory, setIsCategory] = useState(false);
@@ -16,47 +15,40 @@ const Header = () => {
         setIsCategory((prevState) => !prevState);
     };
 
-    const navigate = useNavigate();
-
-    const userProfileHandler = () => {
-        const auth = getCookies("refreshToken"); // If the user is logged in, the user must have the "refreshToken" and otherwise, the user must log in.
-        auth && navigate("/user-profile"); // Moving the user to the profile page if the user is logged in
-        !auth && navigate("/login"); // Transfer the user to the login page if they do not have the token
-    };
-
-    const supportPageHandler = () => {
-        const auth = getCookies("refreshToken"); // If the user is logged in, the user must have the "refreshToken" and otherwise, the user must log in.
-        auth && navigate("/chat-with-support"); // Moving the user to the profile page if the user is logged in
-        !auth && navigate("/login"); // Transfer the user to the login page if they do not have the token
-    };
-
     return (
         <>
             <header className="border-b border-solid border-gray-300">
                 <div className="container flex flex-row-reverse items-center justify-between h-14">
                     <div className="flex flex-row-reverse w-[30%] items-center justify-start gap-6">
-                        <button className="btnPrimary hover:hoverBtn">
+                        <Link
+                            to="/advertisement-registration"
+                            className="btnPrimary hover:hoverBtn"
+                        >
                             ثبت آگهی
-                        </button>
+                        </Link>
                         <div className="w-[60%]">
                             <ul className="w-full flex flex-row items-center justify-between">
-                                <li
-                                    className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100"
-                                    onClick={supportPageHandler}
-                                >
-                                    <p>پشتیبانی</p>
-                                    <BiSupport />
+                                <li>
+                                    <Link
+                                        to="/chat-with-support"
+                                        className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100"
+                                    >
+                                        <p>پشتیبانی</p>
+                                        <BiSupport />
+                                    </Link>
                                 </li>
                                 <li className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100">
                                     <p>چت</p>
                                     <IoChatbubblesOutline />
                                 </li>
-                                <li
-                                    onClick={userProfileHandler}
-                                    className="flex flex-row-reverse items-center cursor-pointer gap-2 text-xs px-1 py-2 rounded text-primaryGray primary-transition hover:text-black hover:bg-gray-100"
-                                >
-                                    دیوار من
-                                    <FaRegUser />
+                                <li>
+                                    <Link
+                                        to="/user-profile"
+                                        className="flex flex-row-reverse items-center cursor-pointer gap-2 text-xs px-1 py-2 rounded text-primaryGray primary-transition hover:text-black hover:bg-gray-100"
+                                    >
+                                        دیوار من
+                                        <FaRegUser />
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

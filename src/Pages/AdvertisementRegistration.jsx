@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCookies } from "../Utils/getCookies";
 import AlertLogin from "../Components/AlertLogin.jsx";
+import Header from "../LayOut/Header.jsx";
 
 const AdvertisementRegistration = () => {
     const [isDone, setIsDone] = useState(false);
@@ -16,7 +17,12 @@ const AdvertisementRegistration = () => {
     if (isDone) {
         return <AlertLogin />;
     } else if (!isDone) {
-        return <div>AdvertisementRegistration</div>;
+        return (
+            <>
+                <Header />
+                <div>AdvertisementRegistration</div>
+            </>
+        );
     }
 };
 
