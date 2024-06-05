@@ -9,6 +9,9 @@ import HomePage from "../Pages/HomePage.jsx";
 import { getProfile } from "../services/getProfile.js";
 import AdminHomePage from "../Pages/AdminPanel/AdminHomePage.jsx";
 import AdvertisementRegistration from "../Pages/AdvertisementRegistration.jsx";
+import UserProfile from "../Pages/UserProfile.jsx";
+import ErrorHandler from "../Pages/ErrorHandler.jsx";
+import Support from "../Pages/Support.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -24,6 +27,8 @@ const Routers = () => {
                 <Route index element={<HomePage />} />
                 <Route path="/sing-up" element={<SingUp />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/user-profile" element={<UserProfile />} />
+                <Route path="/chat-with-support" element={<Support />} />
                 <Route
                     path="/panel-admin-home"
                     element={
@@ -38,6 +43,7 @@ const Routers = () => {
                     path="/advertisement-registration"
                     element={<AdvertisementRegistration />}
                 />
+                <Route path="*" element={<ErrorHandler />} />
             </Routes>
         </BrowserRouter>
     );

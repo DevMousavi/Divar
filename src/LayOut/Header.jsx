@@ -5,13 +5,29 @@ import { IoChatbubblesOutline, IoLocationOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 import { LuSearch } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp, IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getCookies } from "../Utils/getCookies";
 
 const Header = () => {
     const [isCategory, setIsCategory] = useState(false);
 
+    // Changing the state of displaying or not displaying the item list modal
     const toggleCategory = () => {
         setIsCategory((prevState) => !prevState);
+    };
+
+    const navigate = useNavigate();
+
+    const userProfileHandler = () => {
+        const auth = getCookies("refreshToken"); // If the user is logged in, the user must have the "refreshToken" and otherwise, the user must log in.
+        auth && navigate("/user-profile"); // Moving the user to the profile page if the user is logged in
+        !auth && navigate("/login"); // Transfer the user to the login page if they do not have the token
+    };
+
+    const supportPageHandler = () => {
+        const auth = getCookies("refreshToken"); // If the user is logged in, the user must have the "refreshToken" and otherwise, the user must log in.
+        auth && navigate("/chat-with-support"); // Moving the user to the profile page if the user is logged in
+        !auth && navigate("/login"); // Transfer the user to the login page if they do not have the token
     };
 
     return (
@@ -24,7 +40,10 @@ const Header = () => {
                         </button>
                         <div className="w-[60%]">
                             <ul className="w-full flex flex-row items-center justify-between">
-                                <li className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100">
+                                <li
+                                    className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100"
+                                    onClick={supportPageHandler}
+                                >
                                     <p>پشتیبانی</p>
                                     <BiSupport />
                                 </li>
@@ -32,8 +51,11 @@ const Header = () => {
                                     <p>چت</p>
                                     <IoChatbubblesOutline />
                                 </li>
-                                <li className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100">
-                                    <p>دیوار من</p>
+                                <li
+                                    onClick={userProfileHandler}
+                                    className="flex flex-row-reverse items-center cursor-pointer gap-2 text-xs px-1 py-2 rounded text-primaryGray primary-transition hover:text-black hover:bg-gray-100"
+                                >
+                                    دیوار من
                                     <FaRegUser />
                                 </li>
                             </ul>
@@ -79,7 +101,7 @@ const Header = () => {
                 <div
                     className={`${
                         isCategory ? " flex" : "hidden"
-                    } w-[75%] absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-96 bg-white rounded-md z-20`}
+                    } w-[75%] absolute top-14 left-1/2 -translate-x-1/2 h-96 bg-white rounded-md z-20 primary-transition`}
                 >
                     <IoMdClose
                         className="absolute top-3 right-3 text-xl text-primaryColor w-6 h-6 primary-transition hover:hoverBtn cursor-pointer"
