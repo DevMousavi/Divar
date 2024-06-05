@@ -12,6 +12,7 @@ import AdvertisementRegistration from "../Pages/AdvertisementRegistration.jsx";
 import UserProfile from "../Pages/UserProfile.jsx";
 import ErrorHandler from "../Pages/ErrorHandler.jsx";
 import Support from "../Pages/Support.jsx";
+import AboutProduct from "../Pages/AboutProduct.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -29,6 +30,7 @@ const Routers = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/user-profile" element={<UserProfile />} />
                 <Route path="/chat-with-support" element={<Support />} />
+                <Route path="/about-product" element={<AboutProduct />} />
                 <Route
                     path="/panel-admin-home"
                     element={
