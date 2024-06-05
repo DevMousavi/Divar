@@ -31,20 +31,20 @@ const Header = () => {
                                 <li>
                                     <Link
                                         to="/chat-with-support"
-                                        className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100"
+                                        className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:hoverText"
                                     >
                                         <p>پشتیبانی</p>
                                         <BiSupport />
                                     </Link>
                                 </li>
-                                <li className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:bg-gray-100">
+                                <li className="flex flex-row-reverse items-center gap-2 text-xs px-1 py-2 rounded text-primaryGray cursor-pointer primary-transition hover:text-black hover:hoverText">
                                     <p>چت</p>
                                     <IoChatbubblesOutline />
                                 </li>
                                 <li>
                                     <Link
                                         to="/user-profile"
-                                        className="flex flex-row-reverse items-center cursor-pointer gap-2 text-xs px-1 py-2 rounded text-primaryGray primary-transition hover:text-black hover:bg-gray-100"
+                                        className="flex flex-row-reverse items-center cursor-pointer gap-2 text-xs px-1 py-2 rounded text-primaryGray primary-transition hover:text-black hover:hoverText"
                                     >
                                         دیوار من
                                         <FaRegUser />

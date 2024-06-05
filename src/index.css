@@ -32,6 +32,11 @@
     .hoverBtn {
         opacity: 90%;
     }
+    .hoverText {
+        color: #000000;
+        cursor: pointer;
+        background-color: rgba(59, 131, 246, 0.075);
+    }
 }
 
 * {
