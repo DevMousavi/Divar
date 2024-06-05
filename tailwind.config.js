@@ -11,9 +11,11 @@ export default {
         "2xl": "1440px",
     },
     theme: {
+        container: { center: true },
         extend: {
             colors: {
                 primaryColor: "#a62626",
+                primaryGray: "rgba(0, 0, 0, 0.56)",
             },
         },
     },

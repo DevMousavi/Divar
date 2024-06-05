@@ -20,11 +20,17 @@
     .primaryBoxShadow {
         box-shadow: 0px 0px 8px #858484;
     }
+    .btnPrimary {
+        color: #ffffff;
+        background-color: #a62626;
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 2px solid #a62626;
+        transition: all ease 250ms;
+    }
 
     .hoverBtn {
-        background-color: #ffffff;
-        color: #a62626;
-        border: 2px solid #a62626;
+        opacity: 90%;
     }
 }
 
