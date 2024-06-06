@@ -13,6 +13,9 @@ import UserProfile from "../Pages/UserProfile.jsx";
 import ErrorHandler from "../Pages/ErrorHandler.jsx";
 import Support from "../Pages/Support.jsx";
 import AboutProduct from "../Pages/AboutProduct.jsx";
+import UsersList from "../Pages/AdminPanel/PagesAdmin/UsersList.jsx";
+import CategoriesList from "../Pages/AdminPanel/PagesAdmin/CategoriesList.jsx";
+import AddAds from "../Pages/AdminPanel/PagesAdmin/AddAds.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -31,6 +34,10 @@ const Routers = () => {
                 <Route path="/chat-with-support" element={<Support />} />
                 <Route path="/about-product/:id" element={<AboutProduct />} />
                 <Route
+                    path="/advertisement-registration"
+                    element={<AdvertisementRegistration />}
+                />
+                <Route
                     path="/panel-admin-home"
                     element={
                         data && data.role === "ADMIN" ? (
@@ -41,8 +48,34 @@ const Routers = () => {
                     }
                 />
                 <Route
-                    path="/advertisement-registration"
-                    element={<AdvertisementRegistration />}
+                    path="/users-list"
+                    element={
+                        data && data.role === "ADMIN" ? (
+                            <UsersList />
+                        ) : (
+                            <Navigate to="/" />
+                        )
+                    }
+                />
+                <Route
+                    path="/categories-list"
+                    element={
+                        data && data.role === "ADMIN" ? (
+                            <CategoriesList />
+                        ) : (
+                            <Navigate to="/" />
+                        )
+                    }
+                />
+                <Route
+                    path="/add-ads"
+                    element={
+                        data && data.role === "ADMIN" ? (
+                            <AddAds />
+                        ) : (
+                            <Navigate to="/" />
+                        )
+                    }
                 />
                 <Route path="*" element={<ErrorHandler />} />
             </Routes>
