@@ -19,7 +19,6 @@ const Routers = () => {
         queryKey: ["profile"],
         queryFn: getProfile,
     });
-    console.log({ data, isLoading, isError, error, isFetching });
     if (isLoading) return <h1>Loading...</h1>;
 
     return (

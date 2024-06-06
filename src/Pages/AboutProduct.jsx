@@ -82,7 +82,7 @@ const AboutProduct = () => {
                             placeholder="نظر خود را وارد کنید..."
                             rows="4"
                             cols="50"
-                            className="w-full outline-none border border-solid border-gray-200 mx-auto p-2 text-xs"
+                            className="w-full outline-none rounded-lg border border-solid border-gray-400 mx-auto p-2 text-xs"
                         ></textarea>
                         <button className="btnPrimary w-32 hover:hoverBtn">
                             ارسال نطر
