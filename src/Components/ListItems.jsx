@@ -6,7 +6,7 @@ import Pagination from "./Pagination.jsx";
 
 const ListItems = ({ category }) => {
     const [pageNumber, setPageNumber] = useState(1);
-    console.log(pageNumber);
+
     useEffect(() => {
         setPageNumber(1);
     }, [category]);
