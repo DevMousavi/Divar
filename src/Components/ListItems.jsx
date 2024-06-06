@@ -1,29 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../services/Config";
 import Pagination from "./Pagination.jsx";
 
 const ListItems = ({ category }) => {
-    const [pageNumber, setPageNumber] = useState("1");
+    const [pageNumber, setPageNumber] = useState(1);
+    console.log(pageNumber);
+    useEffect(() => {
+        setPageNumber(1);
+    }, [category]);
 
     const { data, isLoading, isError, error, isFetching } = useQuery({
-        queryKey: ["advertisement", category],
+        queryKey: ["advertisement", category, pageNumber],
         queryFn: async () => {
             if (category === "All") {
                 const request = await api.get("/advertisements");
-                console.log("Category is All: ", request);
                 return request;
             } else {
                 const request = await api.get(
                     `/advertisements/${category}/${pageNumber}/39`
                 );
-                console.log("With Category:", request);
                 return request;
             }
         },
     });
 
+    if (isError && error.response.status === 404) {
+        setPageNumber("-1");
+    }
     return (
         <>
             <div className="w-full flex flex-col items-center ">

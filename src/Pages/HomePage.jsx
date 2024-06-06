@@ -13,7 +13,7 @@ const HomePage = () => {
             <TextHomePage />
             <main className="container mt-1 flex flex-row gap-20">
                 <SideBar setCategory={setCategory} />
-                <ListItems category={category} />
+                <ListItems category={category} setCategory={setCategory} />
             </main>
         </>
     );
