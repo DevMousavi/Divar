@@ -69,11 +69,11 @@ const AboutProduct = () => {
                         </p>
                     </span>
                 </div>
-                <div className="bg-yellow-100 flex flex-col gap-5">
+                <div className="flex flex-col gap-5">
                     <img
                         src=""
                         alt="imageProducts.png"
-                        className="w-96 h-96 rounded border-2 border-solid border-gray-800"
+                        className="w-96 h-96 rounded border border-solid border-gray-200"
                     />
                     <form className="w-full flex flex-col gap-2 items-end">
                         <textarea
