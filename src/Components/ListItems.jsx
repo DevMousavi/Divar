@@ -15,7 +15,10 @@ const ListItems = ({ category }) => {
         queryKey: ["advertisement", category, pageNumber],
         queryFn: async () => {
             if (category === "All") {
-                const request = await api.get("/advertisements");
+                setPageNumber(1);
+                const request = await api.get(
+                    `/advertisements/${pageNumber}/39`
+                );
                 return request;
             } else {
                 const request = await api.get(

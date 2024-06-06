@@ -7,28 +7,36 @@ import { api } from "../services/Config.js";
 import Header from "../LayOut/Header.jsx";
 import { BsExclamationDiamond } from "react-icons/bs";
 import { convertToPersianNumbers } from "../Helpers/convertToPersianNumbers.js";
+import { convertDate } from "../Helpers/convertDate.js";
 
 const AboutProduct = () => {
-    // const params = useParams();
-    // const { data, isLoading, isError, error, isFetching } = useQuery({
-    //     queryKey: ["advertisement"],
-    //     queryFn: async () => {
-    //         const request = api.get(`/advertisements/${params.id}`);
-    //         return request;
-    //     },
-    // });
+    const params = useParams();
+    const { data, isLoading, isError, error, isFetching } = useQuery({
+        queryKey: ["advertisement"],
+        queryFn: async () => {
+            const request = await api.get(`/advertisements/${params.id}`);
+            return request;
+        },
+    });
 
-    // console.log(data);
+    data && console.log(data);
+    if (isLoading) {
+        return <h1>loading</h1>;
+    }
     return (
         <>
             <Header />
-            <div className=" my-14 w-[1000px] mx-auto flex flex-row gap-7">
+            <div className="flex flex-row gap-2 items-center justify-start text-primaryGray text-xs  w-[1000px] mx-auto mt-14 border-b border-solid border-gray-200">
+                <p className="font-bold">دسته بندی : </p>
+                <p>{data.data.category.title}</p>
+            </div>
+            <div className=" mb-14 mt-2 w-[1000px] mx-auto flex flex-row gap-7">
                 <div className=" w-full py-6">
                     <h1 className="text-2xl font-bold text-primaryColor  pb-2">
-                        متن اسم آگهی تستی متن اسم آگهی تستی متن اسم آگهی تستی
+                        {data.data.name}
                     </h1>
                     <h3 className="text-sm py-2 border-b border-solid border-gray-200">
-                        1 ساعت پیش در شیراز
+                        {convertDate("2024-06-06T05:01:56.366Z")}
                     </h3>
                     <span className=" flex flex-row items-start justify-between w-[50%] mx-auto py-4 border-b border-solid border-gray-200">
                         <BsExclamationDiamond className="text-primaryColor" />
@@ -47,7 +55,9 @@ const AboutProduct = () => {
                     <span className="flex w-full items-start justify-between border-b border-solid border-gray-200 py-2 text-black">
                         <p className="font-bold text-primaryGray">قیمت:</p>
                         <p>
-                            {convertToPersianNumbers((20000).toLocaleString())}
+                            {convertToPersianNumbers(
+                                data.data.price.toLocaleString()
+                            )}
                         </p>
                     </span>
                     <span>
@@ -55,14 +65,7 @@ const AboutProduct = () => {
                             توضحیات
                         </h6>
                         <p className="text-black w-full text-wrap px-2 text-sm">
-                            متن توضحیات کاربر متن توضحیات کاربر متن توضحیات
-                            کاربر متن توضحیات کاربر متن توضحیات کاربر متن
-                            توضحیات کاربر متن توضحیات کاربر متن توضحیات کاربر
-                            متن توضحیات کاربر متن توضحیات کاربر متن توضحیات
-                            کاربر متن توضحیات کاربر متن توضحیات کاربر متن
-                            توضحیات کاربر متن توضحیات کاربر متن توضحیات کاربر
-                            متن توضحیات کاربر متن توضحیات کاربر متن توضحیات
-                            کاربر
+                            {data.data.description}
                         </p>
                     </span>
                 </div>
