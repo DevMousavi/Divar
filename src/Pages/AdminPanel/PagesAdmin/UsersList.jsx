@@ -4,10 +4,10 @@ import SideBar from "../SideBar";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/Config";
 import UserBox from "../Components/UserBox";
+import { LuSearch } from "react-icons/lu";
 
 const UsersList = () => {
     const [deletePhoneNumber, setDeletePhoneNumber] = useState(null);
-    console.log(deletePhoneNumber);
     const queryClient = useQueryClient();
 
     const { data, isLoading, isError, error } = useQuery({
@@ -17,7 +17,6 @@ const UsersList = () => {
             return request;
         },
     });
-    console.log({ data, isLoading, isError, error });
 
     const { mutate } = useMutation({
         mutationFn: async (phoneNumber) => {
@@ -43,18 +42,28 @@ const UsersList = () => {
                     {isLoading ? (
                         <h1>Loading</h1>
                     ) : (
-                        <ul className="flex flex-col gap-2">
-                            {data.data.map((item) => (
-                                <UserBox
-                                    key={item._id}
-                                    userName={item.username}
-                                    phoneNumber={item.phone}
-                                    location={item.city}
-                                    role={item.role}
-                                    handleDelete={handleDelete}
+                        <>
+                            <div className="flex flex-row justify-center gap-4">
+                                <input
+                                    type="number"
+                                    placeholder="جستجو کاربر با شماره ...... "
+                                    className="outline-none bg-gray-100 w-[50%] mb-6 border-2 border-solid text-xs border-primaryColor rounded px-3 py-2"
                                 />
-                            ))}
-                        </ul>
+                                <LuSearch className="text-white bg-primaryColor p-1 rounded-md w-9 h-full" />
+                            </div>
+                            <ul className="flex flex-col gap-2">
+                                {data.data.map((item) => (
+                                    <UserBox
+                                        key={item._id}
+                                        userName={item.username}
+                                        phoneNumber={item.phone}
+                                        location={item.city}
+                                        role={item.role}
+                                        handleDelete={handleDelete}
+                                    />
+                                ))}
+                            </ul>
+                        </>
                     )}
                 </div>
             </div>
