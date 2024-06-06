@@ -18,6 +18,12 @@ const SideBar = ({ setCategory }) => {
             ) : (
                 <aside className="flex flex-col gap-1 font-bold text-sm text-primaryGray w-full pb-5">
                     <ul className="w-full">
+                        <li
+                            onClick={() => setCategory("All")}
+                            className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
+                        >
+                            همه دسته بندی ها
+                        </li>
                         {data &&
                             data.data.map((item) => (
                                 <li
