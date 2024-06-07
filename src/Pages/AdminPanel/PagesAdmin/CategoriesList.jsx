@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderAdmin from "../HeaderAdmin";
-import SideBar from "../SideBar";
+import HeaderAdmin from "../LayOut/HeaderAdmin.jsx";
+import SideBar from "../Components/SideBar";
 import { api } from "../../../services/Config";
 import { useQuery } from "@tanstack/react-query";
 import BoxCategories from "../Components/BoxCategories";
@@ -14,7 +14,9 @@ const CategoriesList = () => {
         },
     });
 
-    data && console.log(data);
+    if (isLoading) {
+        return <h1>Loading...</h1>;
+    }
     return (
         <>
             <HeaderAdmin />

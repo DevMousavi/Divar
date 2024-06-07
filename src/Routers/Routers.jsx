@@ -7,7 +7,7 @@ import Login from "../Pages/Auth/Login.jsx";
 
 import HomePage from "../Pages/HomePage.jsx";
 import { getProfile } from "../services/getProfile.js";
-import AdminHomePage from "../Pages/AdminPanel/AdminHomePage.jsx";
+import AdminHomePage from "../Pages/AdminPanel/PagesAdmin/AdminHomePage.jsx";
 import AdvertisementRegistration from "../Pages/AdvertisementRegistration.jsx";
 import UserProfile from "../Pages/UserProfile.jsx";
 import ErrorHandler from "../Pages/ErrorHandler.jsx";

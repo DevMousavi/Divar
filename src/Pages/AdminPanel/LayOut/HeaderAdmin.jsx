@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../../public/Logo.svg";
-import { getProfile } from "../../services/getProfile";
+import logo from "../../../../public/Logo.svg";
 import { IoMdClose } from "react-icons/io";
-import { getRole } from "../../Helpers/role";
-import { convertToPersianNumbers } from "../../Helpers/convertToPersianNumbers";
+import { getProfile } from "../../../services/getProfile";
+import { getRole } from "../../../Helpers/role";
+import { convertToPersianNumbers } from "../../../Helpers/convertToPersianNumbers";
 
 const HeaderAdmin = () => {
     const [isProfile, setIsProfile] = useState(false);

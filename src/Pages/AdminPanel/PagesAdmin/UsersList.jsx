@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import HeaderAdmin from "../HeaderAdmin";
-import SideBar from "../SideBar";
+import HeaderAdmin from "../LayOut/HeaderAdmin";
+import SideBar from "../Components/SideBar.jsx";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/Config";
 import UserBox from "../Components/UserBox";

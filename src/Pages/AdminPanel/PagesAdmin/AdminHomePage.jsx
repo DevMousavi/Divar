@@ -1,6 +1,7 @@
 import React from "react";
-import HeaderAdmin from "./HeaderAdmin";
-import SideBar from "./SideBar";
+
+import HeaderAdmin from "../LayOut/HeaderAdmin.jsx";
+import SideBar from "../Components/SideBar.jsx";
 
 const AdminHomePage = () => {
     return (

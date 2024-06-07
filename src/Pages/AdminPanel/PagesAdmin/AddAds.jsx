@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderAdmin from "../HeaderAdmin";
+import HeaderAdmin from "../LayOut/HeaderAdmin";
 
 const AddAds = () => {
     return (
