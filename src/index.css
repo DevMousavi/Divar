@@ -37,6 +37,10 @@
         cursor: pointer;
         background-color: rgba(59, 131, 246, 0.075);
     }
+
+    .boxShadow {
+        box-shadow: 2px 2px 15px rgb(124, 124, 124);
+    }
 }
 
 * {
