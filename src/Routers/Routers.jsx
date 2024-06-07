@@ -15,7 +15,7 @@ import Support from "../Pages/Support.jsx";
 import AboutProduct from "../Pages/AboutProduct.jsx";
 import UsersList from "../Pages/AdminPanel/PagesAdmin/UsersList.jsx";
 import CategoriesList from "../Pages/AdminPanel/PagesAdmin/CategoriesList.jsx";
-import AddAds from "../Pages/AdminPanel/PagesAdmin/AddAds.jsx";
+import AddCategory from "../Pages/AdminPanel/PagesAdmin/AddCategory.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
@@ -71,7 +71,7 @@ const Routers = () => {
                     path="/add-ads"
                     element={
                         data && data.role === "ADMIN" ? (
-                            <AddAds />
+                            <AddCategory />
                         ) : (
                             <Navigate to="/" />
                         )
