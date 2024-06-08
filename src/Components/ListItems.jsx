@@ -3,6 +3,7 @@ import Card from "./Card";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../services/Config";
 import Pagination from "./Pagination.jsx";
+import LoaderPages from "../Loader/LoaderPages.jsx";
 
 const ListItems = ({ category }) => {
     const [pageNumber, setPageNumber] = useState(1);
@@ -37,7 +38,7 @@ const ListItems = ({ category }) => {
             <div className="w-full flex flex-col items-center ">
                 <div className="w-full flex flex-row justify-between flex-wrap gap-y-3">
                     {isLoading ? (
-                        <h2>Loading</h2>
+                        <LoaderPages />
                     ) : (
                         data &&
                         data.data.map((item) => (

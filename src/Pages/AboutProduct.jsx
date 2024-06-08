@@ -8,6 +8,7 @@ import Header from "../LayOut/Header.jsx";
 import { BsExclamationDiamond } from "react-icons/bs";
 import { convertToPersianNumbers } from "../Helpers/convertToPersianNumbers.js";
 import { convertDate } from "../Helpers/convertDate.js";
+import LoaderPages from "../Loader/LoaderPages.jsx";
 
 const AboutProduct = () => {
     const params = useParams();
@@ -19,9 +20,8 @@ const AboutProduct = () => {
         },
     });
 
-    data && console.log(data);
     if (isLoading) {
-        return <h1>loading</h1>;
+        return <LoaderPages />;
     }
     return (
         <>

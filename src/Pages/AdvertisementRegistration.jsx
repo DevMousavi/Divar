@@ -14,6 +14,7 @@ const AdvertisementRegistration = () => {
             setIsDone(false);
         }
     }, []);
+
     if (isDone) {
         return <AlertLogin />;
     } else if (!isDone) {

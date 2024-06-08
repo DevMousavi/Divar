@@ -4,6 +4,7 @@ import SideBar from "../Components/SideBar";
 import { api } from "../../../services/Config";
 import { useQuery } from "@tanstack/react-query";
 import BoxCategories from "../Components/BoxCategories";
+import LoaderPages from "../../../Loader/LoaderPages.jsx";
 
 const CategoriesList = () => {
     const { data, isLoading } = useQuery({
@@ -15,7 +16,7 @@ const CategoriesList = () => {
     });
 
     if (isLoading) {
-        return <h1>Loading...</h1>;
+        return <LoaderPages />;
     }
     return (
         <>

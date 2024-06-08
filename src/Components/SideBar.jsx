@@ -11,34 +11,34 @@ const SideBar = ({ setCategory }) => {
         },
     });
 
+    if (isLoading) {
+        return null;
+    }
+
     return (
         <div className=" w-72">
-            {isLoading ? (
-                <h1>Loading</h1>
-            ) : (
-                <aside className="flex flex-col gap-1 font-bold text-sm text-primaryGray w-full pb-5">
-                    <ul className="w-full">
-                        <li
-                            onClick={() => setCategory("All")}
-                            className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
-                        >
-                            همه دسته بندی ها
-                        </li>
-                        {data &&
-                            data.data.map((item) => (
-                                <li
-                                    onClick={() => {
-                                        setCategory(item._id);
-                                    }}
-                                    key={item._id}
-                                    className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
-                                >
-                                    {item.title}
-                                </li>
-                            ))}
-                    </ul>
-                </aside>
-            )}
+            <aside className="flex flex-col gap-1 font-bold text-sm text-primaryGray w-full pb-5">
+                <ul className="w-full">
+                    <li
+                        onClick={() => setCategory("All")}
+                        className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
+                    >
+                        همه دسته بندی ها
+                    </li>
+                    {data &&
+                        data.data.map((item) => (
+                            <li
+                                onClick={() => {
+                                    setCategory(item._id);
+                                }}
+                                key={item._id}
+                                className="w-full py-2 rounded-sm flex flex-row gap-2 items-center justify-start primary-transition hover:hoverText"
+                            >
+                                {item.title}
+                            </li>
+                        ))}
+                </ul>
+            </aside>
         </div>
     );
 };

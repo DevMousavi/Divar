@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../../services/Config";
 import UserBox from "../Components/UserBox";
 import SearchBoxUser from "../Components/SearchBoxUser.jsx";
+import LoaderPages from "../../../Loader/LoaderPages.jsx";
 
 const UsersList = () => {
     const [deletePhoneNumber, setDeletePhoneNumber] = useState(null);
@@ -40,7 +41,7 @@ const UsersList = () => {
                 <SideBar />
                 <div className="bg-white w-full">
                     {isLoading ? (
-                        <h1>Loading</h1>
+                        <LoaderPages />
                     ) : (
                         <>
                             <SearchBoxUser handleDelete={handleDelete} />
