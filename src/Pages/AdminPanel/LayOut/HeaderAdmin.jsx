@@ -11,10 +11,6 @@ const HeaderAdmin = () => {
     const [isProfile, setIsProfile] = useState(false);
     const [profile, setProfile] = useState(null);
 
-    const toggleProfile = () => {
-        setIsProfile((prevState) => !prevState);
-    };
-
     useEffect(() => {
         const fetchProfile = async () => {
             const whoAmI = await getProfile();
