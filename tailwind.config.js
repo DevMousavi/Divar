@@ -13,6 +13,9 @@ export default {
     theme: {
         container: { center: true },
         extend: {
+            fontFamily: {
+                iransans: ["IRANSansX", "sans-serif"],
+            },
             colors: {
                 primaryColor: "#a62626",
                 primaryGray: "rgba(0, 0, 0, 0.56)",

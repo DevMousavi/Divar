@@ -16,13 +16,14 @@ import AboutProduct from "../Pages/AboutProduct.jsx";
 import UsersList from "../Pages/AdminPanel/PagesAdmin/UsersList.jsx";
 import CategoriesList from "../Pages/AdminPanel/PagesAdmin/CategoriesList.jsx";
 import AddCategory from "../Pages/AdminPanel/PagesAdmin/AddCategory.jsx";
+import LoaderPages from "../Loader/LoaderPages.jsx";
 
 const Routers = () => {
     const { data, isLoading, isError, error, isFetching } = useQuery({
         queryKey: ["profile"],
         queryFn: getProfile,
     });
-    if (isLoading) return <h1>Loading...</h1>;
+    if (isLoading) return <LoaderPages />;
 
     return (
         <BrowserRouter>

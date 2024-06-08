@@ -26,9 +26,9 @@ const AboutProduct = () => {
     return (
         <>
             <Header />
-            <div className="flex flex-row gap-2 items-center justify-start text-primaryGray text-xs  w-[1000px] mx-auto mt-14 border-b border-solid border-gray-200">
+            <div className="font-iransans flex flex-row gap-2 items-center justify-start text-primaryGray text-xs  w-[1000px] mx-auto mt-14 border-b border-solid border-gray-200">
                 <p className="font-bold">دسته بندی : </p>
-                <p>{data.data.category.title}</p>
+                <p>وارد نشده هنوز</p>
             </div>
             <div className=" mb-14 mt-2 w-[1000px] mx-auto flex flex-row gap-7">
                 <div className=" w-full py-6">
