@@ -82,7 +82,7 @@ const AddCategory = () => {
                             type="file"
                             name="icon"
                             id="icon"
-                            className="outline-none border border-solid border-primaryColor rounded w-full px-2 py-1"
+                            className="outline-none border border-solid border-primaryColor rounded w-full px-2 py-1 text-xs"
                             onChange={(e) => setIconCategory(e.target.files[0])}
                         />
                         <button

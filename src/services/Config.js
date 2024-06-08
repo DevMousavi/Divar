@@ -53,13 +53,13 @@ api.interceptors.response.use(
                         const newAccessToken = response.data.newAccessToken;
                         setCookies("accessToken", newAccessToken);
                     }
+                    // Resend the user's request
+                    return api(originalRequest);
                 } catch (error) {
                     console.log(error);
+                    return error;
                 }
             }
-
-            // Resend the user's request
-            return api(originalRequest);
         }
 
         return Promise.reject(error);

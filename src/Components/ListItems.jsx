@@ -5,7 +5,7 @@ import { api } from "../services/Config";
 import Pagination from "./Pagination.jsx";
 import LoaderPages from "../Loader/LoaderPages.jsx";
 
-const ListItems = ({ category }) => {
+const ListItems = ({ category, setIsLoading }) => {
     const [pageNumber, setPageNumber] = useState(1);
 
     useEffect(() => {
@@ -32,7 +32,12 @@ const ListItems = ({ category }) => {
 
     if (isError && error.response.status === 404) {
         setPageNumber("-1");
+    } else if (isLoading) {
+        setIsLoading(true);
+    } else if (!isLoading) {
+        setIsLoading(false);
     }
+
     return (
         <>
             <div className="w-full flex flex-col items-center ">

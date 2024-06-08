@@ -7,13 +7,16 @@ import ListItems from "../Components/ListItems.jsx";
 
 const HomePage = () => {
     const [category, setCategory] = useState("All");
+    const [isLoading, setIsLoading] = useState(null);
     return (
         <>
             <Header />
             <TextHomePage />
             <main className="container mt-1 flex flex-row gap-20">
-                <SideBar setCategory={setCategory} />
-                <ListItems category={category} setCategory={setCategory} />
+                {isLoading === true ? null : (
+                    <SideBar setCategory={setCategory} />
+                )}
+                <ListItems category={category} setIsLoading={setIsLoading} />
             </main>
         </>
     );

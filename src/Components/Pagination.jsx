@@ -18,9 +18,9 @@ const Pagination = ({ setPageNumber, pageNumber, isLoading }) => {
 
     if (!isLoading) {
         return (
-            <div className=" flex flex-row items-center justify-center gap-5 w-96 h-20 ">
+            <div className="cursor-default flex flex-row items-center justify-center gap-5 w-96 h-20 ">
                 <button
-                    className="btnPrimary hover:hoverBtn"
+                    className="btnPrimary hover:hoverBtn cursor-pointer"
                     onClick={() => setPageNumber(pageNumber + 1)}
                 >
                     صفحه بعد
@@ -31,7 +31,7 @@ const Pagination = ({ setPageNumber, pageNumber, isLoading }) => {
                 </p>
                 ...
                 <button
-                    className="btnPrimary hover:hoverBtn"
+                    className="btnPrimary hover:hoverBtn cursor-pointer"
                     onClick={() => setPageNumber(pageNumber - 1)}
                     disabled={pageNumber <= 1}
                 >

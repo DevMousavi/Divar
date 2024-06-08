@@ -3,17 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "../services/Config.js";
 
 const SideBar = ({ setCategory }) => {
-    const { data, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ["categories"],
         queryFn: async () => {
             const request = await api.get("/categories");
             return request;
         },
     });
-
-    if (isLoading) {
-        return null;
-    }
 
     return (
         <div className=" w-72">
